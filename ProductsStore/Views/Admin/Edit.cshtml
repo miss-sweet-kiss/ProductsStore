@@ -1,0 +1,26 @@
+﻿@model ProductsStore.Models.Product
+
+@{
+    ViewBag.Title = "Admin: Edit " + @Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Edit @Model.Name</h2>
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    @Html.HiddenFor(m => m.Id)
+    <p><label>Name</label></p>
+    <p>@Html.TextBoxFor(m => m.Name)</p>
+    <p>@Html.ValidationMessageFor(m => m.Name)</p>
+
+    <p><label>Description</label></p>
+    <p>@Html.TextAreaFor(m => m.Description, new { @rows = 5 })</p>
+    <p>@Html.ValidationMessageFor(m => m.Description)</p>
+
+    <p><label>Price</label></p>
+    <p>@Html.TextBoxFor(m => m.Price)</p>
+    <p>@Html.ValidationMessageFor(m => m.Price)</p>
+
+    <input type="submit" value="Save" />
+    @Html.ActionLink("Back", "Index")
+}
+
